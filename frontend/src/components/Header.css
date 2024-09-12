@@ -1,0 +1,25 @@
+h1 {
+    font-family: Georgia;
+    text-align: center;
+}
+
+header {
+    background-color: rgb(180, 180, 180);
+    display: block;
+    padding: 0.5%;
+}
+
+li {
+    display: inline;
+    font-family: Georgia;
+}
+
+li a {
+    color: black;
+    display: block;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
