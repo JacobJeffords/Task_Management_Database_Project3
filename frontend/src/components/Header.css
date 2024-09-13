@@ -6,11 +6,14 @@ h1 {
 header {
     background-color: rgb(180, 180, 180);
     display: block;
-    padding: 0.5%;
+    padding: 12px;
+}
+
+#pageHeader {
+    float: left;
 }
 
 li {
-    display: inline;
     font-family: Georgia;
 }
 
@@ -18,8 +21,14 @@ li a {
     color: black;
     display: block;
     text-align: center;
+    text-decoration: none;
+}
+
+#links {
+    float: right;
 }
 
 ul {
     list-style-type: none;
+    overflow: hidden;
 }

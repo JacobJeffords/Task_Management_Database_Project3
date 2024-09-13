@@ -5,14 +5,12 @@ import './Header.css';
 function Header() {
   return (
     <header>
-      <h1>Task Management System</h1>
+      <h1 id="pageHeader">Task Management</h1>
       <ul>
-        <li>
+        <li id="links">
           <NavLink exact to="/" activeClassName="active">
             Main
           </NavLink>
-        </li>
-        <li>
           <NavLink to="/login" activeClassName="active">
             Login
           </NavLink>
