@@ -1,7 +1,12 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/sequelize');
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Task extends Model {
 
-const Task = sequelize.define('Task', {
+  };
+  Task.init({
   taskName: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -26,6 +31,10 @@ const Task = sequelize.define('Task', {
     type: DataTypes.DATE,
     allowNull: true,
   },
+}, {
+  sequelize,
+  underscored: true,
+  modelName: 'Task',
 });
-
-module.exports = Task;
+return Task;
+};
