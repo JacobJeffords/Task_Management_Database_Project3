@@ -1,36 +1,55 @@
 const express = require('express');
+const Task = require('../models/Task');
 const router = express.Router();
-const userController = require();
-const bcrypt = require('bcryptjs');
-const pool = require('../db');
 
-// User Registration
-router.post('/register', async (req, res) => {
-    const { username, password } = req.body;
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [username, hashedPassword]);
-        res.status(201).send('User registered');
-    } catch (error) {
-        res.status(500).send('Error registering user');
-    }
+// Create a new task
+router.post('/', async (req, res) => {
+  try {
+    const task = await Task.create(req.body);
+    res.status(201).json(task);
+  } catch (error) {
+    res.status(400).json({ error: 'Error creating task' });
+  }
 });
 
-// User login
-router.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-    try {
-        const result = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
-        const user = result.rows[0];
-        if (user && await bcrypt.compare(password, user.password)) {
-            req.session.userId = user.id; // Store user ID in session
-            res.status(200).send('Login successful');
-        } else {
-            res.status(401).send('Invalid');
-        }
-    } catch (error) {
-        res.status(500).send('Error');
+// Get all tasks
+router.get('/', async (req, res) => {
+  try {
+    const tasks = await Task.findAll();
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching tasks' });
+  }
+});
+
+// Update a task
+router.put('/:id', async (req, res) => {
+  try {
+    const task = await Task.findByPk(req.params.id);
+    if (task) {
+      await task.update(req.body);
+      res.json(task);
+    } else {
+      res.status(404).json({ message: 'Task not found' });
     }
+  } catch (error) {
+    res.status(400).json({ error: 'Error updating task' });
+  }
+});
+
+// Delete a task
+router.delete('/:id', async (req, res) => {
+  try {
+    const task = await Task.findByPk(req.params.id);
+    if (task) {
+      await task.destroy();
+      res.json({ message: 'Task deleted' });
+    } else {
+      res.status(404).json({ message: 'Task not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Error deleting task' });
+  }
 });
 
 module.exports = router;

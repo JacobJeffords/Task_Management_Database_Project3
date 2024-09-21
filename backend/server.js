@@ -1,30 +1,21 @@
-const express = require('express');
-const { Sequelize } = require('sequelize');
-const dotenv = require('dotenv');
-const auth = require('./routes/auth');
-const task = require('./routes/tasks');
+require('dotenv').config(); // Load environment variables
 
-dotenv.config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const userRoutes = require('./routes/users');
+const taskRoutes = require('./routes/tasks');
+const sequelize = require('./config/sequelize'); 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+app.use(bodyParser.json());
 
-// Routes
-app.use('/api/auth', auth);
-app.use('/api/tasks', tasks);
+app.use('/users', userRoutes);
+app.use('/tasks', taskRoutes);
 
-// DB Connection
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-  host: process.env.DB_HOST,
-  dialect: 'postgres',
-});
-
-sequelize.authenticate()
-  .then(() => console.log('Database connected successfully.'))
-  .catch(err => console.error('Unable to connect to the database:', err));
-
-// Start the server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+  await sequelize.sync();
+  console.log('Database connection established.'); 
 });
