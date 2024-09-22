@@ -1,3 +1,5 @@
+Project Owners: Jacob Jeffords & Richard Carino
+
 This is the structure on the BackEnd stack for our Task Management System Projec
 
 Objective:Is to manage the data related to the task and user registration, login, and permissions.
