@@ -1,4 +1,4 @@
-require('dotenv').config(); // Load environment variables
+require('dotenv').config(); 
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -22,6 +22,5 @@ app.use('/tasks', taskRoutes);
 
 app.listen(PORT, async () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-  // await sequelize.sync();
-  // console.log('Database connection established.'); 
+
 });

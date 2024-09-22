@@ -33,6 +33,10 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: true,
       },
+      taskDueTime: {
+        type: Sequelize.TIME,
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
