@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  taskAssignee: {
+  taskAssignees: {
     type: DataTypes.STRING,
     allowNull: false,
   },

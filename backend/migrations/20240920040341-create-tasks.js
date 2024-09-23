@@ -1,6 +1,6 @@
 'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
+// /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Tasks', {
@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: true,
       },
-      taskAssignee: {
+      taskAssignees: {
         type: Sequelize.STRING,
         allowNull: false,
       },
