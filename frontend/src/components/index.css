@@ -49,11 +49,15 @@ button#createTask {
   margin: 20px auto;
 }
 
+#taskPopupButtons {
+  display: flex;
+}
+
 #taskStorageHeader {
   background-color: rgb(180, 180, 180);
   height: 5vh;
   margin: 0 auto;
-  width: 80vh;
+  width: 82.2vh;
 
   display: flex;
   justify-content: center;
@@ -66,6 +70,16 @@ button#createTask {
   height: 40vh;
   margin-top: 0;
   width: 80vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Sourced this line from ChatGPT. */
+  gap: 10px;
+  padding: 10px;
+}
+
+#taskStoragePanelInstruction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-container {

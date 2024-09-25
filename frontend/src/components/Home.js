@@ -13,6 +13,8 @@ function Main() {
   const [tasks, setTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
 
+  const maxTasks = 24;
+
   function OpenTaskWindow() {
     document.getElementById('taskWindow').showModal();
   }
@@ -22,6 +24,11 @@ function Main() {
   }
 
   function handleSubmitTask() {
+    if (tasks.length >= maxTasks) {
+      alert(`You can only log up to ${maxTasks} tasks.`);
+      return;
+    }
+
     const newTask = {
       name: taskName,
       details: taskDetails,
@@ -54,6 +61,12 @@ function Main() {
     setSelectedTask(null);
   }
 
+  function handleDeleteTask() {
+    const updatedTasks = tasks.filter(task => task !== selectedTask);
+    setTasks(updatedTasks);
+    closeTaskPopup();
+  }
+
   return (
     <div id="mainContainer">
       <main>
@@ -63,9 +76,9 @@ function Main() {
           </div>
           <div id="taskStoragePanel">
             {tasks.length === 0 ? (
-              <p>You have no tasks registered! <br></br>
-              Press "Create New Task" to add a task!
-              </p>
+              <div id="taskStoragePanelInstruction">
+                <p>Press "Create New Task" to add a task!</p>
+              </div>
             ) : (
               tasks.map((task, index) => (
                 <button
@@ -94,7 +107,7 @@ function Main() {
               value={taskName}
               onChange={(e) => setTaskName(e.target.value.slice(0, 50))}
               placeholder="Enter task name"
-              maxLength={16}
+              maxLength={8}
             />
 
             <p>Task Details:</p>
@@ -119,12 +132,12 @@ function Main() {
             <input
               type="date"
               value={taskDate}
-              onChange={(e) => setTaskDate(e.target.value)}
+              onChange={(e) => setTaskDate(e.target.value.slice(0, 50))}
             />
             <input
               type="time"
               value={taskTime}
-              onChange={(e) => setTaskTime(e.target.value)}
+              onChange={(e) => setTaskTime(e.target.value.slice(0, 50))}
             />
 
             <p>Task Due Date:</p>
@@ -155,7 +168,10 @@ function Main() {
                 <p>
                   Due Date: {selectedTask.dueDate} {selectedTask.dueTime}
                 </p>
-                <button onClick={closeTaskPopup}>Close</button>
+                <div id="taskPopupButtons">
+                  <button onClick={closeTaskPopup}>Close</button>
+                  <button onClick={handleDeleteTask}>Delete</button>
+                </div>
               </div>
             )}
           </dialog>
