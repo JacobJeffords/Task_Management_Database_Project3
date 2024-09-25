@@ -28,6 +28,8 @@ function Main() {
       assignees: taskAssignees,
       date: taskDate,
       time: taskTime,
+      dueDate: taskDueDate,
+      dueTime: taskDueTime,
     };
 
     setTasks([...tasks, newTask]);
@@ -92,7 +94,7 @@ function Main() {
               value={taskName}
               onChange={(e) => setTaskName(e.target.value.slice(0, 50))}
               placeholder="Enter task name"
-              maxLength={30}
+              maxLength={16}
             />
 
             <p>Task Details:</p>
@@ -117,12 +119,12 @@ function Main() {
             <input
               type="date"
               value={taskDate}
-              onChange={(e) => setTaskDate(e.target.value.slice(0, 50))}
+              onChange={(e) => setTaskDate(e.target.value)}
             />
             <input
               type="time"
               value={taskTime}
-              onChange={(e) => setTaskTime(e.target.value.slice(0, 50))}
+              onChange={(e) => setTaskTime(e.target.value)}
             />
 
             <p>Task Due Date:</p>
@@ -162,6 +164,5 @@ function Main() {
     </div>
   );
 }
-
 
 export default Main;

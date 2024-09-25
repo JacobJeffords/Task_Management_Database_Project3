@@ -60,11 +60,9 @@ button#createTask {
     text-align: center;
 }
 
-
 #taskStoragePanel {
     background-color: rgb(255, 255, 255);
     height: 40vh;
-    margin: 20px;
     margin-top: 0px;
     width: 80vh;
 }
