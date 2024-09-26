@@ -18,7 +18,7 @@ To add a new task, the user will click on the "New Task" button. It will require
 
 **Deployment**
 The deployment is through AWS and the following are the steps:
-1. Zip up the following folders:
+1. Zip up the following folders from the backend code:
    -Client
    -config
    -migrations
