@@ -28,10 +28,20 @@ The deployment is through AWS and the following are the steps:
    -package.json
    -package-lock.json
 3. Created an AWS account
-4. 
-
+4. Configure Service Access
+   -aws-elastic-beanstalk-service-role
+   -aws-ec2-service-role
+5. Add Environment Variables (.env)
+   -NODE_ENV Production
+   -DB_USERNAME
+   -DB_PASSWORD
+   -DB_DATABASE
+   -DB_HOSTNAME
+6. Setup postgres Database and migration script
+7. Upload ZIP file in Elastic Beanstalk
 
 **Bugzilla:**
+This error was corrected (added missing library in Index.js)
 @Backend Errors
     at Module._compile (node:internal/modules/cjs/loader:1469:14)
     at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
