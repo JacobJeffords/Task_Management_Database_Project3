@@ -7,11 +7,13 @@ This task management system allows the users to access, add, and modify individu
 The Task Manager Database offers the following features: Task Access: Users can view their existing task that has been stored in a database. Create new users by creating an account requiring a username and password with authentication. 
 
 **Usage**
-Once the Database is running, you can use it as follows: Open the application in your web browser. Users can browse their task by clicking to the task bar link. This will display a list of open or closed tasks. 
+Once the Database is running, you can use it as follows: Open the application in your web browser. Users can browse their tasks by clicking the task bar link. This will display a list of open or closed tasks. 
 To add a new task, the user will click on the "New Task" button. It will require the user to fill in the required fields, such as: username, task description, assigned date, due date, closed date, and notes. The task will be added upon a “Save” button on the form and will update the database. To modify or delete an existing task, you will click on the task and press an “Edit” button. To save the changes and update the database, you will need to click on the “Save” button. 
 
 **Front End**
-•	Login and Home Page
+•	On the login page, users can enter their username and password, which allows them to access their list of tasks.
+•  On the tasks page, users can enter their tasks. The window will only accept up to 24 tasks, and task names have a character limit of 8.
+   Tasks will automatically be displayed in a grid on the page, and can be viewed, closed, and deleted when clicked.
 
 **Back End**
 
@@ -41,6 +43,8 @@ The deployment is through AWS (Elastic Beanstalk) and the following are the step
 7. Upload ZIP file in Elastic Beanstalk
 
 **Bugzilla:**
+Tasks page can accept impossible dates, such as six digit years, or dates that have already passed.
+
 This error was corrected (added missing library in Index.js)
 @Backend Errors
     at Module._compile (node:internal/modules/cjs/loader:1469:14)
