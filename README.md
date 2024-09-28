@@ -13,7 +13,9 @@ To add a new task, the user will click on the "New Task" button. It will require
 **Front End**
 
 •	On the login page, users can enter their username and password, which allows them to access their list of tasks.
+
 •  On the tasks page, users can enter their tasks. The window will only accept up to 24 tasks, and task names have a character limit of 8.
+
    Tasks will automatically be displayed in a grid on the page, and can be viewed, closed, and deleted when clicked.
 
 **Back End**
