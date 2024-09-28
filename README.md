@@ -51,13 +51,14 @@ The deployment is through AWS (Elastic Beanstalk) and the following are the step
 
 **Bugzilla:**
 
-Tasks page can accept impossible dates, such as six digit years, or dates that have already passed.
+•  Tasks page can accept impossible dates, such as six digit years, or dates that have already passed.
 
-This error was corrected (added missing library in Index.js)
-@Backend Errors
+•  This error was corrected (added missing library in Index.js)
+•  @Backend Errors
     at Module._compile (node:internal/modules/cjs/loader:1469:14)
     at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
     at Module.load (node:internal/modules/cjs/loader:1288:32)
     at Module._load (node:internal/modules/cjs/loader:1104:12)
     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
     at node:internal/main/run_main_module:28:49
+•  We were not able to connect our backend with frontend successfully.
