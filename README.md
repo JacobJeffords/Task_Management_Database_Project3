@@ -7,8 +7,9 @@ This task management system allows the users to access, add, and modify individu
 The Task Manager Database offers the following features: Task Access: Users can view their existing task that has been stored in a database. Create new users by creating an account requiring a username and password with authentication. 
 
 **Usage**
-Once the Database is running, you can use it as follows: Open the application in your web browser. Users can browse their tasks by clicking the task bar link. This will display a list of open or closed tasks. 
-To add a new task, the user will click on the "New Task" button. It will require the user to fill in the required fields, such as: username, task description, assigned date, due date, closed date, and notes. The task will be added upon a “Save” button on the form and will update the database. To modify or delete an existing task, you will click on the task and press an “Edit” button. To save the changes and update the database, you will need to click on the “Save” button. 
+Once the Database is running, you can use it as follows: Open the application in your web browser. This will open into the Task Management home page. In the home page
+you will get a login page to enter your username and password with a login button. Once login, click on the Main Login button to laucn the Enter Your Task page. You will
+enter Task Name, Task Details, Task Assignee, Task Date, and Task Due Date and it will have a submit button and will store the task. It will display the task and will also have a button to create new task.
 
 **Front End**
 
@@ -16,10 +17,13 @@ To add a new task, the user will click on the "New Task" button. It will require
 
 •  On the tasks page, users can enter their tasks. The window will only accept up to 24 tasks, and task names have a character limit of 8.
 
-   Tasks will automatically be displayed in a grid on the page, and can be viewed, closed, and deleted when clicked.
+•  Tasks will automatically be displayed in a grid on the page, and can be viewed, closed, and deleted when clicked.
 
 **Back End**
-
+•  Node.js
+•  Express
+•  postgresDB
+•  user login and password authentication w/no token
 
 **Deployment:**
 The deployment is through AWS (Elastic Beanstalk) and the following are the steps:
@@ -36,7 +40,7 @@ The deployment is through AWS (Elastic Beanstalk) and the following are the step
 4. Configure Service Access
    -aws-elastic-beanstalk-service-role
    -aws-ec2-service-role
-5. Add Environment Variables (.env)
+5. Add Environment Variables (.env) inside backend 
    -NODE_ENV Production
    -DB_USERNAME
    -DB_PASSWORD
@@ -46,6 +50,7 @@ The deployment is through AWS (Elastic Beanstalk) and the following are the step
 7. Upload ZIP file in Elastic Beanstalk
 
 **Bugzilla:**
+
 Tasks page can accept impossible dates, such as six digit years, or dates that have already passed.
 
 This error was corrected (added missing library in Index.js)
