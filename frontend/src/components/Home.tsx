@@ -10,17 +10,33 @@ function Main() {
   const [taskTime, setTaskTime] = useState('');
   const [taskDueDate, setTaskDueDate] = useState('');
   const [taskDueTime, setTaskDueTime] = useState('');
-  const [tasks, setTasks] = useState([]);
-  const [selectedTask, setSelectedTask] = useState(null);
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 
-  const maxTasks = 24;
+  const maxTasks: number = 24;
+
+  interface Task {
+    name: string;
+    details: string;
+    assignees: string;
+    date: string;
+    time: string;
+    dueDate: string;
+    dueTime: string;
+  }
 
   function OpenTaskWindow() {
-    document.getElementById('taskWindow').showModal();
+    const taskWindow = document.getElementById('taskWindow');
+    if (taskWindow) {
+      (taskWindow as HTMLDialogElement).showModal();
+    }
   }
 
   function CloseTaskWindow() {
-    document.getElementById('taskWindow').close();
+    const taskWindow = document.getElementById('taskWindow');
+    if (taskWindow) {
+      (taskWindow as HTMLDialogElement).close();
+    }
   }
 
   function handleSubmitTask() {
@@ -29,7 +45,7 @@ function Main() {
       return;
     }
 
-    const newTask = {
+    const newTask: Task = {
       name: taskName,
       details: taskDetails,
       assignees: taskAssignees,
@@ -51,15 +67,21 @@ function Main() {
     CloseTaskWindow();
   }
 
-  function openTaskPopup(task) {
-    setSelectedTask(task);
-    document.getElementById('taskDetailsWindow').showModal();
+  function openTaskPopup(task: Task) {
+    const taskDetailsWindow = document.getElementById('taskDetailsWindow');
+    if (taskDetailsWindow) {
+      (taskDetailsWindow as HTMLDialogElement).showModal();
+    }
   }
 
+
   function closeTaskPopup() {
-    document.getElementById('taskDetailsWindow').close();
-    setSelectedTask(null);
+    const taskDetailsWindow = document.getElementById('taskDetailsWindow');
+    if (taskDetailsWindow) {
+      (taskDetailsWindow as HTMLDialogElement).close();
+    }
   }
+
 
   function handleDeleteTask() {
     const updatedTasks = tasks.filter(task => task !== selectedTask);
