@@ -38,6 +38,7 @@ function Main() {
       dueDate: taskDueDate,
       dueTime: taskDueTime,
     };
+    // Code to connect backend Node API post request to store task//
 
     setTasks([...tasks, newTask]);
     setTaskName('');
